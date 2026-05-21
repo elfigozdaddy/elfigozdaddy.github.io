@@ -2208,13 +2208,13 @@ input, select, textarea {
 			.panel > *.color2 {
 				background-image: url("../../images/overlay.png"), linear-gradient(45deg, rgba(114, 97, 147, 0.25) 25%, rgba(227, 123, 124, 0.25) 50%, rgba(255, 228, 180, 0.25));
 				background-size: 128px 128px, auto;
-				background-color: #e37b7c;
+				background-color: #d67375;
 			}
 
 			.panel > *.color3 {
-				background-image: url("../../images/overlay.png"), linear-gradient(45deg, rgba(114, 97, 147, 0.25) 25%, rgba(227, 123, 124, 0.25) 50%, rgba(255, 228, 180, 0.25));
+				background-image: url("../../images/overlay.png"), linear-gradient(45deg, rgba(114, 97, 147, 0.25) 25%, rgba(214, 214, 214, 0.25) 50%, rgba(255, 228, 180, 0.25));
 				background-size: 128px 128px, auto;
-				background-color: #ffe4b4;
+				background-color: #3535359a;
 			}
 
 			.panel > *.color4 {
@@ -3503,7 +3503,7 @@ input, select, textarea {
 		-ms-flex-shrink: 1;
 		flex-shrink: 1;
 		height: 100%;
-		padding: 5rem;
+		padding: 3rem;
 	}
 
 		@media screen and (orientation: portrait) {
@@ -3789,7 +3789,7 @@ body {
 }
 
 #header-fisso .logo img {
-    height: 80px;
+    height: 48px;
     width: auto;
     display: block;
 }
@@ -3929,11 +3929,145 @@ h1.titolo-colore-glow {
     margin-bottom: 0.1rem !important;   /* Avvicina il sottotitolo h2 */
     
     /* Il colore principale del testo */
-    color: #b1c9dd !important; 
+    color: #ffffff !important; 
     
     /* EFFETTO BAGLIORE: 
        La prima ombra (più stretta) definisce il bordo, 
        la seconda (più larga) crea l'effetto luce diffusa attorno alla scritta */
-    text-shadow: 0 0 2px #ffffff4d, 
-                 0 0 10px rgba(58, 47, 104, 0.649) !important;
+    text-shadow: 0 0 1px #000000, 
+                 0 0 10px rgb(0, 0, 0) !important;
+}
+
+.testo-micro {
+    font-size: 0.75rem !important; /* Rende il testo piccolissimo */
+    line-height: 1.2;             /* Regola l'altezza della linea per evitare sovrapposizioni */
+}
+
+/* ==========================================================================
+   CAROSELLO FOTO
+   ========================================================================== */
+
+/* Contenitore dello slideshow */
+.slideshow-container {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    background: #1b1b1f; /* Sfondo scuro per riempire i lati vuoti se la foto è stretta */
+}
+
+/* Regole per visualizzare le foto VERTICALI per INTERO */
+.slideshow-container .slide {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%); /* Centra l'immagine verticalmente nello spazio assegnato */
+    width: auto;                 /* Lascia che la larghezza si calcoli in proporzione */
+    height: 100%;                /* Sfrutta tutta l'altezza del wrapper */
+    object-fit: contain;         /* FORZA LA FOTO A VEDERSI INTERAMENTE SENZA TAGLI */
+    opacity: 0;
+    visibility: hidden;
+    
+    /* Ciclo totale di 24 secondi per 6 foto */
+    animation: fadeSlideshow6 24s infinite ease-in-out;
+}
+
+/* Gestione dei ritardi (Immutata, 4 secondi a foto) */
+.slideshow-container .slide:nth-child(1) { animation-delay: 0s; }
+.slideshow-container .slide:nth-child(2) { animation-delay: 4s; }
+.slideshow-container .slide:nth-child(3) { animation-delay: 8s; }
+.slideshow-container .slide:nth-child(4) { animation-delay: 12s; }
+.slideshow-container .slide:nth-child(5) { animation-delay: 16s; }
+.slideshow-container .slide:nth-child(6) { animation-delay: 20s; }
+
+/* ==========================================================================
+   STRATO DI OVERLAY (Scegli una delle tre varianti sotto)
+   ========================================================================== 
+*/
+.slideshow-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Permette i click passanti se sotto ci fossero link */
+    z-index: 2;           /* Si posiziona sopra le immagini animate */
+
+    /* OPZIONE A: Gradiente scuro cinematico (Attiva di default) */
+    /* background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%); */
+    
+    /* OPZIONE B: Tinta unita semitrasparente bluastra (Stile tecnologico) */
+    background-color: rgba(23, 32, 42, 0.4);
+
+    /* OPZIONE C: Effetto "Vetro Sfumato" (Vaporoso) */
+    /* backdrop-filter: blur(2px); */
+}
+
+/* Animazione della dissolvenza (Invariata) */
+@keyframes fadeSlideshow6 {
+    0% { opacity: 0; visibility: hidden; }
+    4% { opacity: 1; visibility: visible; }
+    16% { opacity: 1; visibility: visible; }
+    20% { opacity: 0; visibility: hidden; }
+    100% { opacity: 0; visibility: hidden; }
+}
+
+
+
+/* ==========================================================================
+   MENU A TENDINA (DROPDOWN) PER LA BARRA SUPERIORE
+   ========================================================================== */
+
+/* Rende il link "Prodotti" il punto di riferimento per la tendina */
+.menu-placeholder ul li.dropdown {
+    position: relative;
+}
+
+/* Configurazione iniziale della tendina nascosta */
+.menu-placeholder .dropdown-menu {
+    position: absolute;
+    top: 100%; /* Si posiziona esattamente sotto la barra dei menu */
+    left: 50%;
+    transform: translateX(-50%); /* Centra la tendina rispetto alla voce madre */
+    background: rgba(27, 27, 31, 0.95); /* Sfondo scuro coerente con il carosello */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    min-width: 150px;
+    padding: 10px 0;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    
+    /* Nasconde la tendina di default */
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Stile dei singoli link dentro la tendina */
+.menu-placeholder .dropdown-menu li {
+    display: block;
+    margin: 0 !important;
+    padding: 0;
+    text-align: center;
+}
+
+.menu-placeholder .dropdown-menu li a {
+    display: block;
+    padding: 10px 20px;
+    color: #ffffff !important;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+/* Effetto Hover quando passi sopra i link della tendina */
+.menu-placeholder .dropdown-menu li a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #b1c9dd !important; /* Richiama il colore azzurro/glow del tuo titolo */
+}
+
+/* MOSTRA LA TENDINA AL PASSAGGIO DEL MOUSE (HOVER) */
+.menu-placeholder li.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    top: calc(100% + 5px); /* Effetto leggero slittamento verso il basso */
 }
