@@ -4071,3 +4071,61 @@ h1.titolo-colore-glow {
     visibility: visible;
     top: calc(100% + 5px); /* Effetto leggero slittamento verso il basso */
 }
+
+
+
+/* ==========================================================================
+   LOGO SHINE (OTTIMIZZATO)
+   ========================================================================== */
+
+/* 1. Contenitore del logo */
+.logo-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden; /* Fondamentale: taglia il riflesso quando esce dai bordi del logo */
+}
+
+/* Assicuriamoci che l'immagine mantenga la sua struttura */
+.logo-container img {
+    display: block;
+    max-height: 50px; /* Regola l'altezza in base alle tue esigenze */
+    width: auto;
+}
+
+/* 2. Struttura della linea di riflesso (Fascia inclinata) */
+.shine-line {
+    position: absolute;
+    top: 0;
+    left: -150%; /* Parte completamente nascosto a sinistra */
+    width: 50%;
+    height: 100%;
+    
+    /* Crea la sfumatura bianca inclinata che simula la luce */
+    background: linear-gradient(
+        to right, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.03) 10%,
+        rgba(255, 255, 255, 0.6) 50%, /* Il punto più luminoso al centro */
+        rgba(255, 255, 255, 0.03) 90%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    
+    /* Inclina la linea di 30 gradi */
+    transform: skewX(-30deg); 
+    
+    /* Avvia l'animazione: dura 1.5 secondi e si ripete all'infinito ogni 4 secondi */
+    animation: riflessoScorrimento 5s infinite ease-in-out;
+}
+
+/* 3. L'animazione vera e propria */
+@keyframes riflessoScorrimento {
+    0% {
+        left: -150%; /* Fuori a sinistra */
+    }
+    45% {
+        left: 150%;  /* Attraversa rapidamente tutto il logo e va a destra */
+    }
+    100% {
+        left: 150%;  /* Rimane fermo a destra per il resto del tempo (pausa) */
+    }
+}
