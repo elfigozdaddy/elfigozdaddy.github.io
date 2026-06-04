@@ -1,16 +1,40 @@
 <!DOCTYPE HTML>
+<!--
+	Terms & Conditions Page for TAB•1000
+	Custom minimal layout to prevent conflicts with main.css panel design
+-->
 <html>
 	<head>
 		<title>Termini di Servizio e Rimborso - TAB•1000</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
 		<style>
-			body { padding: 4em 2em; max-width: 800px; margin: 0 auto; line-height: 1.6; color: #ccc; background: #1b1b1f; }
-			h1, h2 { color: #fff; margin-top: 1.5em; }
-			a { color: #54b3a6; text-decoration: none; }
-			a:hover { text-decoration: underline; }
-			.back-link { display: inline-block; margin-bottom: 2em; }
+			/* Reset e Stili di base per evitare conflitti */
+			* { box-sizing: border-box; margin: 0; padding: 0; }
+			body { 
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+				padding: 4em 2em; 
+				max-width: 800px; 
+				margin: 0 auto; 
+				line-height: 1.7; 
+				color: #e3e3e6; 
+				background-color: #1c1c21; /* Sfondo scuro coerente con il tuo brand */
+			}
+			h1 { color: #ffffff; font-size: 2rem; margin-bottom: 1em; border-bottom: 1px solid #333; padding-bottom: 0.5em; }
+			h2 { color: #ffffff; font-size: 1.3rem; margin-top: 2em; margin-bottom: 0.8em; }
+			p { margin-bottom: 1.2em; text-align: justify; font-size: 1rem; color: #b2b2ba; }
+			strong { color: #ffffff; }
+			a { color: #54b3a6; text-decoration: none; font-weight: 500; transition: color 0.2s ease; }
+			a:hover { color: #72cfc2; text-decoration: underline; }
+			.back-link { display: inline-block; margin-bottom: 3em; font-size: 0.9rem; }
+			hr { border: 0; border-top: 1px solid #333; margin: 3em 0 1em 0; }
+			
+			/* Ottimizzazione Mobile */
+			@media screen and (max-width: 736px) {
+				body { padding: 2em 1.5em; }
+				h1 { font-size: 1.6rem; }
+				h2 { font-size: 1.1rem; }
+			}
 		</style>
 	</head>
 	<body>
@@ -36,8 +60,8 @@
 		<h2>5. Contatti</h2>
 		<p>Per qualsiasi richiesta di assistenza tecnica o informazioni prima dell'acquisto, è possibile utilizzare il form di contatto presente nella home page del sito o scrivere alla nostra email di supporto.</p>
 
-		<hr style="border: 0; border-top: 1px solid #333; margin: 3em 0 1em 0;" />
-		<p style="font-size: 0.8rem; color: #777;">Ultimo aggiornamento: Giugno 2026</p>
+		<hr />
+		<p style="font-size: 0.8rem; color: #575762; text-align: left;">Ultimo aggiornamento: Giugno 2026</p>
 
 	</body>
 </html>
