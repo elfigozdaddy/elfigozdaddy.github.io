@@ -1,0 +1,15 @@
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand img {
+  height: 28px;
+}
+
+.tagline {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 500;
+}
