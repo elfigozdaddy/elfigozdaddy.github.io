@@ -3700,7 +3700,7 @@ body {
     left: 0;
     width: 100%;
     height: 80px;
-    padding: 0 20px; /* Spazio ai lati interni della barra */
+    padding: 0 30px; /* Spazio ai lati interni della barra */
     
     display: flex;
     align-items: center;
@@ -3734,7 +3734,7 @@ body {
 
 .menu-placeholder ul li a {
     text-decoration: none;
-    color: #333;
+    color: #000000;
     font-weight: bold;
     font-size: 0.9rem;
     text-transform: uppercase;
